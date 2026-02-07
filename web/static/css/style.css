@@ -1,0 +1,231 @@
+:root {
+    /* Цвета из скриншота (Dark Theme) */
+    --bg-color: #17181c;          /* Очень темный фон */
+    --card-bg: #22232a;           /* Фон карточки */
+    --text-primary: #ffffff;
+    --text-secondary: #8b8b90;    /* Серый текст */
+    --accent-blue: #607afb;       /* Яркий синий (как на кнопке) */
+    --accent-red: #ff4b4b;        /* Красный для цены */
+    --badge-bg: #2f2f33;          /* Фон бейджа категории */
+
+    /* Telegram Theme Integration */
+    --tg-theme-bg-color: var(--bg-color);
+    --tg-theme-text-color: var(--text-primary);
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Убираем синюю подсветку при тапе на Android */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding-bottom: 80px; /* Отступ под MainButton */
+}
+
+/* --- Header & Search --- */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-color);
+    z-index: 100;
+}
+
+.search-container {
+    flex-grow: 1;
+    position: relative;
+    background-color: #26272d;
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    color: var(--text-secondary);
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+#search-input {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    font-size: 14px;
+    outline: none;
+}
+
+.filter-btn, .menu-btn {
+    background: #26272d;
+    border: none;
+    color: white;
+    width: 40px;
+    height: 36px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Product Grid --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 колонки */
+    gap: 12px;
+    padding: 0 16px;
+}
+
+/* --- Product Card --- */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Круглые картинки как в примере */
+    object-fit: cover;
+    margin-bottom: 10px;
+    background-color: #333; /* Заглушка */
+}
+
+/* Для прямоугольных картинок (как книги/курсы на скрине) */
+.card-img.rounded {
+    border-radius: 12px;
+}
+
+.card-title {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    height: 34px; /* Фикс высота для выравнивания */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.price-container {
+    margin-bottom: 8px;
+}
+
+.old-price {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-decoration: line-through;
+    display: block;
+}
+
+.new-price {
+    font-size: 14px;
+    color: var(--accent-red);
+    font-weight: 700;
+}
+
+.category-tag {
+    font-size: 10px;
+    color: var(--text-secondary);
+    background-color: var(--badge-bg);
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+/* --- Add Button / Counter Control --- */
+.action-btn {
+    width: 100%;
+    height: 36px;
+    border-radius: 18px;
+    border: none;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+/* Состояние: "В корзину" */
+.btn-add {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+/* Состояние: Счетчик (- 1 +) */
+.counter-control {
+    background-color: var(--accent-blue);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4px;
+}
+
+.counter-btn {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter-val {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* --- Forms --- */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.input-field {
+    width: 100%;
+    background-color: var(--card-bg);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    padding: 12px;
+    color: var(--text-primary);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-field:focus {
+    border-color: var(--accent-blue);
+}
+
+textarea.input-field {
+    resize: vertical;
+}
